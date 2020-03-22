@@ -1,7 +1,6 @@
 import pygame
 
 pygame.init()
-
 win = pygame.display.set_mode((500, 500))
 
 pygame.display.set_caption("Trump Game")
@@ -53,40 +52,40 @@ def drawWindow():
 
 
 run = True
-
 while run:
     clock.tick(30)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
                 run = False
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and x > 5:
-            x -= speed
-            left = True
-            right = False
-        elif keys[pygame.K_RIGHT] and x < 500 - width - 5:
-            x += speed
-            left = False
-            right = True
-        else:
-            left = False
-            right = False
-            animCount = 0
-        if not (isJump):
-            if keys[pygame.K_SPACE]:
-                isJump = True
-        else:
-            if jumpCount >= -10:
-                if jumpCount < 0:
-                    y += (jumpCount ** 2) / 2
-                else:
-                    y -= (jumpCount ** 2) / 2
-                jumpCount -= 1
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and x > 5:
+        x -= speed
+        left = True
+        right = False
+    elif keys[pygame.K_RIGHT] and x < 500 - width - 5:
+        x += speed
+        left = False
+        right = True
+    else:
+        left = False
+        right = False
+        animCount = 0
+    if not (isJump):
+        if keys[pygame.K_SPACE]:
+            isJump = True
+    else:
+        if jumpCount >= -10:
+            if jumpCount < 0:
+                y += (jumpCount ** 2) / 2
             else:
-                isJump = False
-                jumpCount = 10
+                y -= (jumpCount ** 2) / 2
+            jumpCount -= 1
+        else:
+            isJump = False
+            jumpCount = 10
 
     drawWindow()
 
-    pygame.quit()
+pygame.quit()
